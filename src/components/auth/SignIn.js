@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, Text, TextInput, Platform} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity, Platform} from 'react-native'
 
 class SignIn extends Component {
     static propTypes = {
@@ -28,8 +28,15 @@ class SignIn extends Component {
                            style = {styles.input}
                            secureTextEntry
                 />
+                <TouchableOpacity onPress = {this.signIn}>
+                    <Text>Sign In</Text>
+                </TouchableOpacity>
             </View>
         )
+    }
+
+    signIn = () => {
+        console.log('---', 'sign in')
     }
 
     setPassword = password => this.setState({ password })
