@@ -1,17 +1,12 @@
 import React, { Component } from 'react'
 import {Text, StyleSheet, SectionList, TouchableOpacity} from 'react-native'
 import EventCard from './EventCard'
-import {eventList} from '../../fixtures'
 import groupBy from 'lodash/groupBy'
 
 class EventList extends Component {
     static propTypes = {
 
     };
-
-    static defaultProps = {
-        events: eventList
-    }
 
     render() {
         const {onEventPress, events} = this.props
