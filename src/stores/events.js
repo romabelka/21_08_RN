@@ -1,9 +1,9 @@
 import {observable, computed, action} from 'mobx'
 import firebase from 'firebase'
+import BasicStore from './BasicStore'
 import {entitiesFromFB} from './utils'
-import {data} from '../fixtures'
 
-class Events {
+class Events extends BasicStore {
     @observable loading = false
     @observable loaded = false
 
@@ -17,7 +17,7 @@ class Events {
         return Object.keys(this.entities).length
     }
 
-    loadAll() {
+    @action loadAll() {
         this.loading = true
 
         firebase.database().ref('events')

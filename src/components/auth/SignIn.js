@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {observer, inject} from 'mobx-react'
 import firebase from 'firebase'
 import {View, Text, TextInput, TouchableOpacity, Platform} from 'react-native'
+import {NavigationActions} from 'react-navigation'
 
 @inject('user')
 @observer
@@ -38,14 +39,14 @@ class SignIn extends Component {
         const {user} = this.props
         firebase.auth().signInWithEmailAndPassword(user.email, user.password)
             .then((userEntity) => {
+                console.log('---', userEntity)
                 user.user = userEntity
-                this.props.navigation.navigate('eventList')
             })
         console.log('---', 'sign in')
     }
 
-    setPassword = password => userStore.password = password
-    setEmail = email => userStore.email = email
+    setPassword = password => this.props.user.password = password
+    setEmail = email => this.props.user.email = email
 }
 
 const styles = {
