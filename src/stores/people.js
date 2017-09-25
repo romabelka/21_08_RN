@@ -3,7 +3,7 @@ import firebase from 'firebase'
 import BasicStore from './BasicStore'
 import {entitiesFromFB} from './utils'
 
-class Events extends BasicStore {
+class People extends BasicStore {
     @observable loading = false
     @observable loaded = false
 
@@ -19,12 +19,12 @@ class Events extends BasicStore {
 
     @action loadAll() {
         this.loading = true
-        firebase.database().ref('events')
+        firebase.database().ref('people')
             .once('value').then( data => {
-                this.entities = entitiesFromFB(data.val())
-                this.loading = false
-            })
+            this.entities = entitiesFromFB(data.val())
+            this.loading = false
+        })
     }
 }
 
-export default Events
+export default People
