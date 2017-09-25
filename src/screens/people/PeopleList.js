@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {observer, inject} from 'mobx-react'
 import {View, StyleSheet, ActivityIndicator} from 'react-native'
 import PeopleList from '../../components/people/PeopleList'
+import {text, email} from 'react-native-communications'
 
 @inject('people')
 @observer
@@ -30,7 +31,8 @@ class PeopleListScreen extends Component {
     }
 
     handlePress = uid => {
-        this.props.people.entities[uid].email = 'LALALALALA'
+//        email(this.props.people.entities[uid].email)
+        text('+123456789', 'event notification')
     }
 }
 
