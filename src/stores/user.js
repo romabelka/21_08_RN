@@ -6,16 +6,13 @@ class User extends BasicStore{
     constructor(...args) {
         super(...args)
 
-        firebase.auth().onAuthStateChanged(user => {
-            const routeName = user ? 'lists' : 'auth'
-            this.getStore('navigation').reset(routeName)
-        })
+        firebase.auth().onAuthStateChanged(user => this.user = user)
     }
 
     @observable email: ''
     @observable password: ''
 
-    user: null
+    @observable user: null
 }
 
 export default User

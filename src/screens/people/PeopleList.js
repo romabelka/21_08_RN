@@ -22,11 +22,15 @@ class PeopleListScreen extends Component {
     render() {
         const {people} = this.props
         if (people.loading) return this.getLoader()
-        return <PeopleList />
+        return <PeopleList onPersonPress = {this.handlePress}/>
     }
 
     getLoader() {
         return <View><ActivityIndicator size='large'/></View>
+    }
+
+    handlePress = uid => {
+        this.props.people.entities[uid].email = 'LALALALALA'
     }
 }
 
