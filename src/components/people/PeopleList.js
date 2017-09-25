@@ -23,9 +23,7 @@ class PeopleList extends Component {
             sections = {people.sections}
             renderSectionHeader = {({section}) => <Text style={styles.header}>{section.title}</Text>}
             renderItem = {({item}) => <TouchableOpacity onPress = {onPersonPress.bind(null, item.key)}>
-                <Observer>
-                    {() => <Text>{item.person.email}</Text>}
-                </Observer>
+                <PersonCard person = {item.person}/>
             </TouchableOpacity>}
         />
     }
