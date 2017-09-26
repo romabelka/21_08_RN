@@ -23,7 +23,7 @@ class PeopleListScreen extends Component {
     render() {
         const {people} = this.props
         if (people.loading) return this.getLoader()
-        return <PeopleList onPersonPress = {this.handlePress}/>
+        return <PeopleList onPersonPress = {this.handlePress} onLongPress = {this.handleLongPress}/>
     }
 
     getLoader() {
@@ -31,8 +31,12 @@ class PeopleListScreen extends Component {
     }
 
     handlePress = uid => {
-//        email(this.props.people.entities[uid].email)
-        text('+123456789', 'event notification')
+        email(this.props.people.entities[uid].email)
+//        text('+123456789', 'event notification')
+    }
+
+    handleLongPress = uid => {
+        this.props.navigation.navigate('personPhoto', { uid })
     }
 }
 
