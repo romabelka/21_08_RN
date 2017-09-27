@@ -1,6 +1,7 @@
-import EntitiesStore, {loadAllHelper}  from './EntitiesStore'
+import EntitiesStore, {subscribeHelper}  from './EntitiesStore'
 import {computed, action} from 'mobx'
 import groupBy from 'lodash/groupBy'
+import firebase from 'firebase'
 
 class PeopleStore extends EntitiesStore {
     @computed get sections() {
@@ -12,7 +13,12 @@ class PeopleStore extends EntitiesStore {
         }))
     }
 
-    @action loadAll = loadAllHelper('people')
+    @action updatePerson(uid, data) {
+        //todo add loader on camera, add realtime
+        firebase.database().ref(`people/${uid}`).update(data)
+    }
+
+    @action loadAll = subscribeHelper('people')
 }
 
 export default PeopleStore

@@ -27,7 +27,7 @@ class Photo extends Component {
         if (!this.permitted) return null
         return (
             <View style = {styles.container}>
-                <Camera style = {styles.container} type = {this.type} ref = {this.getCameraRef}>
+                <Camera style = {styles.camera} type = {this.type} ref = {this.getCameraRef}>
                     <View style = {styles.overlay}>
                         <View style = {styles.controls}>
                             <TouchableOpacity
@@ -56,21 +56,17 @@ class Photo extends Component {
     }
 
     async takePhoto() {
-        console.log('---', 555)
-        this.camera.takePictureAsync()
-            .then((uri) => {
-                console.log('---', 123, uri)
-                FileSystem.readAsStringAsync(uri)
-                    .then(blob => console.log('---', blob))
-                    .catch(err => console.log('---', 'err', err))
-            })
-            .catch(err => console.log('---', 'err', err))
+        const {base64, getPhoto} = this.props
+        const photo = await this.camera.takePictureAsync({ base64 })
+        getPhoto(photo)
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#000',
+        justifyContent: 'center'
     },
     camera: {
         flex: 1

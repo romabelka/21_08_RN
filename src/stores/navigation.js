@@ -45,6 +45,10 @@ class Navigation extends BasicStore {
     @action goTo(routeName, params) {
         this.dispatch(NavigationActions.navigate({ routeName, params }))
     }
+
+    @action goBack() {
+        this.dispatch(NavigationActions.back())
+    }
 }
 
 export default Navigation
