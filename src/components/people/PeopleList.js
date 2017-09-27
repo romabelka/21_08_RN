@@ -22,7 +22,7 @@ class PeopleList extends Component {
         return <SectionList
             sections = {people.sections}
             renderSectionHeader = {({section}) => <Text style={styles.header}>{section.title}</Text>}
-            renderItem = {({item}) => <TouchableOpacity onPress = {onPersonPress.bind(null, item.key)}>
+            renderItem = {({item}) => <TouchableOpacity onPress = {() => onPersonPress(item.key)}>
                 <PersonCard person = {item.person}/>
             </TouchableOpacity>}
         />

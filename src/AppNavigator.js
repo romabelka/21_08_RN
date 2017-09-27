@@ -4,6 +4,7 @@ import Event from './screens/events/Event'
 import EventMap from './screens/events/EventMap'
 import EventList from './screens/events/EventList'
 import PeopleList from './screens/people/PeopleList'
+import Person from './screens/people/Person'
 
 const ListsNavigator = TabNavigator({
     events: {
@@ -12,6 +13,9 @@ const ListsNavigator = TabNavigator({
     people: {
         screen: PeopleList
     }
+}, {
+    tabBarPosition: 'top',
+    animationEnabled: true
 })
 
 const AppNavigator = StackNavigator({
@@ -23,6 +27,10 @@ const AppNavigator = StackNavigator({
     },
     event: {
         screen: Event
+    },
+
+    person: {
+        screen: Person
     },
     eventMap: {
         screen: EventMap

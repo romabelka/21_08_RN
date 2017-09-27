@@ -29,7 +29,7 @@ class EventListScreen extends Component {
     }
 
     handleEventPress = (uid) => {
-        console.log('---', this.props)
+        //console.log('---', this.props)
         this.props.navigation.navigate('event', { uid })
     }
 }

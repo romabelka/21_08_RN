@@ -30,9 +30,9 @@ class PeopleListScreen extends Component {
         return <View><ActivityIndicator size='large'/></View>
     }
 
-    handlePress = uid => {
-//        email(this.props.people.entities[uid].email)
-        text('+123456789', 'event notification')
+    handlePress = (uid) => {
+        //console.log('---', this.props)
+        this.props.navigation.navigate('person', { uid })
     }
 }
 
